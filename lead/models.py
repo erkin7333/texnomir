@@ -37,7 +37,7 @@ class Lead(models.Model):
     priority = models.CharField(max_length=50, choices=CHOICES_PRIORITY, default=MEDIUM)
     created_by = models.ForeignKey(User, related_name='leads', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_ad = models.DateTimeField(auto_now=True)
+    modified_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.company
 

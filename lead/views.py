@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class LeadViewSet(ModelViewSet):
-    """..Yetakchilarni malumotini chiqarish uchun ModelViewSet"""
+    """..Yetakchilarni malumotini chiqarish uchun ModelViewSet.."""
 
     serializer_class = LeadSerializer
     queryset = Lead.objects.all()

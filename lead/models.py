@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from team.models import Team
 
-"""Yetakchilar uchum model"""
 class Lead(models.Model):
+    """Yetakchilar uchum model"""
+
     NEW = 'Yangi'
     CONTACTED = 'ALOQA QILGAN'
     INPROGRESS = 'JARAYONDA'
@@ -26,7 +26,6 @@ class Lead(models.Model):
         (HIGH, 'YUQORI')
     )
 
-    team = models.ForeignKey(Team, related_name='leads', on_delete=models.CASCADE)
     company = models.CharField(max_length=255, verbose_name='Kompaniya')
     contact_person = models.CharField(max_length=255, verbose_name="Shaxs bn bog'lanish")
     email = models.EmailField(verbose_name="Elektron manzil")
@@ -36,7 +35,6 @@ class Lead(models.Model):
     estimated_value = models.IntegerField(blank=True, null=True, verbose_name='Taxminiy qiymat')
     status = models.CharField(max_length=50, choices=CHOICES_STATUS, default=NEW)
     priority = models.CharField(max_length=50, choices=CHOICES_PRIORITY, default=MEDIUM)
-    assigned_at = models.ForeignKey(User, related_name='assignedleads', on_delete=models.SET_NULL, blank=True, null=True)
     created_by = models.ForeignKey(User, related_name='leads', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
